@@ -1,10 +1,9 @@
-"""Compatibility entry point for local development."""
-
 import uvicorn
 
 from ai_worker.config import get_settings
 
-if __name__ == "__main__":
+
+def main() -> None:
     settings = get_settings()
     uvicorn.run(
         "ai_worker.api:app",
@@ -12,3 +11,7 @@ if __name__ == "__main__":
         port=settings.api_port,
         reload=settings.environment == "development",
     )
+
+
+if __name__ == "__main__":
+    main()
